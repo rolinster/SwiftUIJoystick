@@ -13,14 +13,14 @@ public extension View {
     /// Creates a custom joystick with the following configuration
     ///
     ///     parameter joystickMonitor: An object used to monitor the valid position of the thumb on the Joystick
-    ///     parameter width: Width of the joystick control area, for a circular Joystick this is the diameter
+    ///     parameter size: Width/Height of the joystick control area, for a circular Joystick this is the diameter
     ///     parameter shape: (.rect || .circle) - Shape of the hitbox for the position output of the Joystick Thumb position
     ///     parameter background: The view displayed as the Joystick background
     ///     parameter foreground: The view displayed as the Joystick Thumb Control
     ///     parameter locksInPlace: default false - Determines if the thumb control returns to the center point when released
-    ///     parameter locksInPlace: default false - Determines if the thumb control returns to the center point when released
-    func joystickGestureRecognizer(thumbPosition: Binding<CGPoint>, monitor: JoystickMonitor, width: CGFloat, shape: JoystickShape, locksInPlace locks: Bool = false) -> some View {
-        modifier(JoystickGestureRecognizer(thumbPosition: thumbPosition, monitor: monitor, width: width, type: shape, locksInPlace: locks))
+    ///     parameter lockOneAxis: Determines if the Joystick prevents movement in the X or Y axis
+    func joystickGestureRecognizer(thumbPosition: Binding<CGPoint>, monitor: JoystickMonitor, size: CGSize, shape: JoystickShape, locksInPlace locks: Bool = false, lockOneAxis: Bool = false) -> some View {
+        modifier(JoystickGestureRecognizer(thumbPosition: thumbPosition, monitor: monitor, size: size, type: shape, locksInPlace: locks, lockOneAxis: lockOneAxis))
     }
     
 }

@@ -162,10 +162,16 @@ YourView()
 | monitor      | JoyStickMonitor | ObservableObect that publishes the Joystick control's XY and Polar coordinates | no       |
 | width        | CGFloat         | The width or diameter of the Joystick control                                  | no       |
 |              |                 | Output values will be from 0-width                                             |          |
-| shape        | JostickShape    | The shape of the Joystick's hitbox area, rectangluar or circular       Valid input: `.rect` or `.circle`  | no       |
+| size         | CGSize          | The width and height of the Joystick control                                   | yes      |
+|              |                 |  Defaults to the width parameter CGSize(width:width, height:width)             |          |
+| shape        | JostickShape    | The shape of the Joystick's hitbox area, rectangluar or circular               | no       |
+|              |                 |  Valid input: `.rect` or `.circle`                                             |          |
 | background   | some View       | Any View type input can be put here to create a background for the Joystick    | no       |
 | foreground   | some View       | A View for the thumb or foreground of the Joystick                             | no       |
 | locksInPlace | Bool            | A bool to determine if the Joystick resets back to the center when release     | no       |
+| lockOneAxis  | Bool            | A bool to determine if the Joystick prevents movement in the X or Y axis       | no       |       
+|              |                 |  When a rectangle with unequal width and height is supplied, movement will be  |          |
+|              |                 |  prevented in the axis with the smaller value                                  |          |
 
 ## 👨‍💻 Contributions
 

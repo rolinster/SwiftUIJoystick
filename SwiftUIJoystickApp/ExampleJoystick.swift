@@ -18,14 +18,16 @@ public struct Joystick: View {
     /// The width or diameter in which the Joystick will report values
     ///  For example: 100 will provide 0-100, with (50,50) being the origin
     private let dragDiameter: CGFloat
+    private let dragRectangle: CGSize
     /// Can be `.rect` or `.circle`
     /// Rect will allow the user to access the four corners
     /// Circle will limit Joystick it's radius determined by `dragDiameter / 2`
     private let shape: JoystickShape
     
-    public init(monitor: JoystickMonitor, width: CGFloat, shape: JoystickShape = .rect) {
+    public init(monitor: JoystickMonitor, size: CGSize, shape: JoystickShape = .rect) {
         self.joystickMonitor = monitor
-        self.dragDiameter = width
+        self.dragDiameter = size.width
+        self.dragRectangle = size
         self.shape = shape
     }
     
@@ -33,7 +35,7 @@ public struct Joystick: View {
         VStack{
             JoystickBuilder(
                 monitor: self.joystickMonitor,
-                width: self.dragDiameter,
+                size: self.dragRectangle,
                 shape: .rect,
                 background: {
                     // Example Background
@@ -43,7 +45,7 @@ public struct Joystick: View {
                     // Example Thumb
                     Circle().fill(Color.black)
                 },
-                locksInPlace: false)
+                locksInPlace: false, lockOneAxis: true)
         }
     }
 }

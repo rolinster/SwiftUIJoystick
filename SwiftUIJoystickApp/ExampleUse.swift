@@ -16,8 +16,10 @@ struct ExampleUse: View {
     
     var body: some View {
         VStack {
+            Text("Example easy to customize rectangular Joystick")
+            Joystick(monitor: monitor, size: CGSize(width: 120, height: 40))
             Text("Example easy to customize Joystick")
-            Joystick(monitor: monitor, width: 100)
+            Joystick(monitor: monitor, size: CGSize(width: 40, height: 120))
             Text("XY Point = (x: \(monitor.xyPoint.x.formattedString), y: \(monitor.xyPoint.y.formattedString))")
                 .fixedSize()
             Text("Polar Point = (radians: \(monitor.polarPoint.degrees.formattedString), y: \(monitor.polarPoint.distance.formattedString)")
@@ -25,7 +27,7 @@ struct ExampleUse: View {
             
                 JoystickBuilder(
                     monitor: monitor,
-                    width: 100,
+                    size: CGSize(width: 40, height: 120),
                     shape: .rect,
                     background: {
                         ZStack {
@@ -55,7 +57,7 @@ struct ExampleUse: View {
                                     .blur(radius: 1)
                             )
                     },
-                    locksInPlace: false)
+                    locksInPlace: false, lockOneAxis: false)
         }
     }
 }
