@@ -78,7 +78,7 @@ public struct JoystickGestureRecognizer: ViewModifier {
     internal func validateCoordinate(_ emitPoint: inout CGPoint) {
         emitPoint = emitPoint * 2
         if lockOneAxis && (size.width < size.height) {
-            emitPoint.x = size.width / 2
+            emitPoint.x = 0
         } else if emitPoint.x > size.width {
             emitPoint.x = size.width
         } else if emitPoint.x < -size.width {
@@ -86,7 +86,7 @@ public struct JoystickGestureRecognizer: ViewModifier {
         }
 
         if lockOneAxis && (size.height < size.width) {
-            emitPoint.y = size.height / 2
+            emitPoint.y = 0
         } else if emitPoint.y > size.height {
             emitPoint.y = size.height
         } else if emitPoint.y < -size.height {
